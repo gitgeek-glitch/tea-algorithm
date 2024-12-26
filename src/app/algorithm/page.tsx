@@ -1,68 +1,35 @@
-'use client'
-
-import * as Tabs from '@radix-ui/react-tabs'
-
-const encryptionCode = `function teaEncrypt(plaintext, key, rounds = 32) {
-    const DELTA = 0x9E3779B9;
-    let [v0, v1] = plaintext;
-    let [k0, k1, k2, k3] = key;
-    let sum = 0;
-    
-    for (let i = 0; i < rounds; i++) {
-        sum += DELTA;
-        v0 += ((v1 << 4) + k0) ^ (v1 + sum) ^ ((v1 >>> 5) + k1);
-        v0 >>>= 0;
-        v1 += ((v0 << 4) + k2) ^ (v0 + sum) ^ ((v0 >>> 5) + k3);
-        v1 >>>= 0;
-    }
-    
-    return [v0, v1];
-}`
-
-const decryptionCode = `function teaDecrypt(ciphertext, key, rounds = 32) {
-    const DELTA = 0x9E3779B9;
-    let [v0, v1] = ciphertext;
-    let [k0, k1, k2, k3] = key;
-    let sum = DELTA * rounds;
-    
-    for (let i = 0; i < rounds; i++) {
-        v1 -= ((v0 << 4) + k2) ^ (v0 + sum) ^ ((v0 >>> 5) + k3);
-        v1 >>>= 0;
-        v0 -= ((v1 << 4) + k0) ^ (v1 + sum) ^ ((v1 >>> 5) + k1);
-        v0 >>>= 0;
-        sum -= DELTA;
-    }
-    
-    return [v0, v1];
-}`
-
-export default function CodeTabs() {
+export default function Algorithm() {
   return (
-    <Tabs.Root defaultValue="encrypt" className="flex flex-col w-full">
-      <Tabs.List className="flex border-b border-gray-700 mb-4">
-        <Tabs.Trigger 
-          value="encrypt"
-          className="px-6 py-2 text-gray-400 hover:text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
-        >
-          Encrypt
-        </Tabs.Trigger>
-        <Tabs.Trigger 
-          value="decrypt"
-          className="px-6 py-2 text-gray-400 hover:text-white data-[state=active]:text-white data-[state=active]:border-b-2 data-[state=active]:border-white"
-        >
-          Decrypt
-        </Tabs.Trigger>
-      </Tabs.List>
-      <Tabs.Content value="encrypt">
-        <pre className="bg-[#1e2530] p-6 rounded-lg overflow-x-auto">
-          <code className="text-white">{encryptionCode}</code>
-        </pre>
-      </Tabs.Content>
-      <Tabs.Content value="decrypt">
-        <pre className="bg-[#1e2530] p-6 rounded-lg overflow-x-auto">
-          <code className="text-white">{decryptionCode}</code>
-        </pre>
-      </Tabs.Content>
-    </Tabs.Root>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <h1 className="text-3xl font-bold">Tiny Encryption Algorithm (TEA)</h1>
+      <div className="space-y-4">
+        <p>
+          The Tiny Encryption Algorithm (TEA) is a block cipher notable for its simplicity of description and implementation, typically a few lines of code. It was designed by David Wheeler and Roger Needham of the Cambridge Computer Laboratory.
+        </p>
+        <h2 className="text-2xl font-semibold">Key Features:</h2>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Block size: 64 bits (two 32-bit integers)</li>
+          <li>Key size: 128 bits (four 32-bit integers)</li>
+          <li>Number of rounds: 32 (recommended)</li>
+          <li>Simple operations: uses only addition, XOR, and bit shifts</li>
+          <li>No S-boxes or lookup tables required</li>
+          <li>Fast implementation in software</li>
+        </ul>
+        <h2 className="text-2xl font-semibold">Algorithm Structure:</h2>
+        <ol className="list-decimal pl-6 space-y-2">
+          <li>Split the 64-bit block into two 32-bit integers (v0, v1)</li>
+          <li>Use a 128-bit key split into four 32-bit integers (k[0] to k[3])</li>
+          <li>Use a constant delta (derived from the golden ratio)</li>
+          <li>Perform 32 rounds of mixing operations</li>
+          <li>Each round:
+            <ul className="list-disc pl-6 mt-2">
+              <li>Updates v0 using v1, two key parts, and the sum</li>
+              <li>Updates v1 using v0, two key parts, and the sum</li>
+              <li>Uses a combination of addition, XOR, and shifts</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
   )
 }
