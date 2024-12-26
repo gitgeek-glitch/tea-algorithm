@@ -3,8 +3,8 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center">
-      <h1 className="text-6xl font-bold mb-4">TEA Algorithm</h1>
-      <p className="text-xl mb-4">Tiny Encryption Algorithm Implementation</p>
+      <h1 className="text-6xl font-bold mb-4">TEA</h1>
+      <p className="text-xl mb-4">Tiny Encryption Algorithm</p>
       <p className="mb-8 max-w-2xl">
         A simple yet powerful block cipher that uses simple operations for encryption and decryption.
       </p>

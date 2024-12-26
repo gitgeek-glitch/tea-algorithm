@@ -1,7 +1,7 @@
 export default function Pseudocode() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold">TEA Algorithm Pseudocode</h1>
+      <h1 className="text-3xl font-bold">TEA Pseudocode</h1>
       <div className="bg-gray-800 p-6 rounded-lg">
         <pre className="whitespace-pre-wrap font-mono text-sm">
 {`Encryption:

@@ -19,7 +19,7 @@ const Header = () => {
     <header className="bg-[#1e2530] border-b border-gray-700 text-white p-4 sticky top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold">
-          TEA Algorithm
+          TEA
         </Link>
         <ul className="flex space-x-6">
           {links.map(({ href, label }) => (

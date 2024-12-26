@@ -6,7 +6,7 @@ import Header from '@/components/header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'TEA Algorithm',
+  title: 'TEA',
   description: 'Tiny Encryption Algorithm Implementation and Demonstration',
 }
 
