@@ -18,8 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#1e2530] text-white min-h-screen`}>
+        <div className="fixed inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
         <Header />
-        <main className="container mx-auto px-4 py-8">
+        <main className="container mx-auto px-4 py-8 relative z-10">
           {children}
         </main>
       </body>
